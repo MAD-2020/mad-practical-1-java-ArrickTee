@@ -1,7 +1,8 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.*;
 
-public class Question5
+public class Main
 {
   public static void main(String[] args)
   {
@@ -28,38 +29,37 @@ public class Question5
      */
      
     Scanner in = new Scanner(System.in);
-    int number_int = in.nextint();
-    int[] num_list
+    int number_int = in.nextInt();
     int final_num;
-    int num;
-    int count_final;
-    int count;
-    ArrayList<String> num_list = new ArrayList<String>();
+    int num1;
+    int num2;
+    int count_final = 0;
+    int count = 0;
+    ArrayList<Integer> num_list = new ArrayList<Integer>();
     
-    for (i = 0; i < number_int; i++){
-      string number = "";
-      number = in.nextint();
+    for (int i = 0; i < number_int; i++){
+      int number = 0;
+      number = in.nextInt();
       num_list.add(number);
-      }
+    }
       
-    Collection.sort(num_list);
-    final_num = num_list
-    for (i = 0; i < number_int; i++){
-      num = num_list[i];
-      switch(num){
-        case final_num:
-          count = count + 1;
-          break;
-        default:
-          if (final_count > count){
-            break;
-          }
-          else{
-            final_num = num;
-            break;
-          }
+    Collections.sort(num_list);
+    num1 = num_list.get(0);
+    final_num = num1;
+    for (int i = 1; i < number_int; i++){
+      num2 = num_list.get(i);
+      if (num1 != num2){
+        count = 0;
       }
-      System.out.println(final_num);
-    }   
+      else{
+        count += 1;
+      }
+      num1 = num2;
+      if (count_final < count){
+        count_final = count;
+        final_num = num1;
+      }
+    } 
+    System.out.println(final_num); 
   }
 }
